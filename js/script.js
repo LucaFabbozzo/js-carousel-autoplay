@@ -1,3 +1,12 @@
+// **Consegna**
+// Copiamo la repo del carousel in una nuova cartella (attenzione ad eliminare la cartella .git) e facciamo funzionare il carousel, oltre che con i bottoni anche in autoplay al caricamento della pagina.
+// **BONUS:**
+// Passando con il mouse sopra le immagini l’autoplay si ferma per poi ripartire quando il mouse esce dallo slider
+
+//utilizzare le timing functions per poter fare questo
+//setInterval() la piu' indicata perche ti permette di impostare un contatore che vada all'infinito finche io non lo blocco.
+
+
 const slider = document.querySelector('.items-wrapper');
 const sliderThumb = document.querySelector('.items-wrap-small');
 const next = document.querySelector('.top');
@@ -50,7 +59,8 @@ next.addEventListener('click', function() {
   thumbs[counterImages].classList.add('active');
 })
 
-prev.addEventListener('click', function() {
+
+setInterval(function() {
 
   items[counterImages].classList.remove('active');
   thumbs[counterImages].classList.remove('active');
@@ -58,7 +68,9 @@ prev.addEventListener('click', function() {
   if(counterImages === images.length) counterImages = 0;
   items[counterImages].classList.add('active');
   thumbs[counterImages].classList.add('active');
-});
+}, 1000);
+
+
 
 
 
