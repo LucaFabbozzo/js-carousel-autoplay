@@ -41,23 +41,21 @@ sliderThumb.innerHTML +=thumbTags;
 const items = document.getElementsByClassName('item');
 const thumbs = document.getElementsByClassName('small');
 
-
 items[counterImages].classList.add('active');
 thumbs[counterImages].classList.add('active');
 
 
+next.addEventListener('click', nextSlide);
+next.addEventListener('click', pauseCounter);
+prev.addEventListener('click', prevSlide);
+prev.addEventListener('click', pauseCounter);
 slider.addEventListener('mouseover', pauseCounter);
+slider.addEventListener('mouseout', playCounter);
 sliderThumb.addEventListener('mouseover', pauseCounter);
+sliderThumb.addEventListener('mouseout', playCounter);
 
-clock = setInterval(function() {
 
-  items[counterImages].classList.remove('active');
-  thumbs[counterImages].classList.remove('active');
-  counterImages--
-  if(counterImages < 0 ) counterImages = images.length - 1;
-  items[counterImages].classList.add('active');
-  thumbs[counterImages].classList.add('active');
-}, 2000);
+clock = setInterval(nextSlide, 1000);
 
 
 function pauseCounter() {
@@ -65,26 +63,33 @@ function pauseCounter() {
  }
 
 
+function playCounter() {
+  clock = setInterval(nextSlide, 1000);
+}
 
-next.addEventListener('click', function() {
 
+ 
+function nextSlide() {
   items[counterImages].classList.remove('active');
   thumbs[counterImages].classList.remove('active');
   counterImages--
   if(counterImages < 0 ) counterImages = images.length - 1;
   items[counterImages].classList.add('active');
   thumbs[counterImages].classList.add('active');
-})
+}
 
-prev.addEventListener('click', function() {
 
-  items[counterImages].classList.remove('active');
+function prevSlide() {
+   items[counterImages].classList.remove('active');
   thumbs[counterImages].classList.remove('active');
   counterImages++
   if(counterImages === images.length) counterImages = 0;
   items[counterImages].classList.add('active');
   thumbs[counterImages].classList.add('active');
-});
+}
+
+
+
 
 
 
