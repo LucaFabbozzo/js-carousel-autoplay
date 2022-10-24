@@ -3,9 +3,6 @@
 // **BONUS:**
 // Passando con il mouse sopra le immagini l’autoplay si ferma per poi ripartire quando il mouse esce dallo slider
 
-
-
-
 const slider = document.querySelector('.items-wrapper');
 const sliderThumb = document.querySelector('.items-wrap-small');
 const next = document.querySelector('.top');
@@ -24,6 +21,7 @@ const images = [
 let imagesTags = '';
 let thumbTags = '';
 let counterImages = 0;
+let clock;
 
 
 for(let i = 0; i < images.length; i++) { 
@@ -48,9 +46,10 @@ items[counterImages].classList.add('active');
 thumbs[counterImages].classList.add('active');
 
 
-next.addEventListener('mouseover', pauseCounter);
+// next.addEventListener('click', pauseCounter);
+// prev.addEventListener('click', pauseCounter)
 
-const clock = setInterval(function() {
+clock = setInterval(function() {
 
   items[counterImages].classList.remove('active');
   thumbs[counterImages].classList.remove('active');
@@ -61,28 +60,31 @@ const clock = setInterval(function() {
 }, 2000);
 
 
-function pauseCounter() {
-    clearInterval(clock);
- }
+// function pauseCounter() {
+//     clearInterval(clock);
+//  }
 
 
 
-// prev.addEventListener('click', backwards) 
+next.addEventListener('click', function() {
 
-// function backwards() {
-//   setInterval(function() {
+  items[counterImages].classList.remove('active');
+  thumbs[counterImages].classList.remove('active');
+  counterImages--
+  if(counterImages < 0 ) counterImages = images.length - 1;
+  items[counterImages].classList.add('active');
+  thumbs[counterImages].classList.add('active');
+})
 
-//   items[counterImages].classList.remove('active');
-//   thumbs[counterImages].classList.remove('active');
-//   counterImages++
-//   if(counterImages === images.length) counterImages = 0;
-//   items[counterImages].classList.add('active');
-//   thumbs[counterImages].classList.add('active');
-// }, 2000);
+prev.addEventListener('click', function() {
 
-// }
-
-
+  items[counterImages].classList.remove('active');
+  thumbs[counterImages].classList.remove('active');
+  counterImages++
+  if(counterImages === images.length) counterImages = 0;
+  items[counterImages].classList.add('active');
+  thumbs[counterImages].classList.add('active');
+});
 
 
 
