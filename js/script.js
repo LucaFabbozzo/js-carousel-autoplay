@@ -68,18 +68,7 @@ function playCounter() {
 }
 
 
- 
 function nextSlide() {
-  items[counterImages].classList.remove('active');
-  thumbs[counterImages].classList.remove('active');
-  counterImages--
-  if(counterImages < 0 ) counterImages = images.length - 1;
-  items[counterImages].classList.add('active');
-  thumbs[counterImages].classList.add('active');
-}
-
-
-function prevSlide() {
    items[counterImages].classList.remove('active');
   thumbs[counterImages].classList.remove('active');
   counterImages++
@@ -89,6 +78,14 @@ function prevSlide() {
 }
 
 
+function prevSlide() {
+  items[counterImages].classList.remove('active');
+  thumbs[counterImages].classList.remove('active');
+  counterImages--
+  if(counterImages < 0 ) counterImages = images.length - 1;
+  items[counterImages].classList.add('active');
+  thumbs[counterImages].classList.add('active');
+}
 
 
 
