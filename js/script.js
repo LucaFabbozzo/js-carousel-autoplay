@@ -3,8 +3,7 @@
 // **BONUS:**
 // Passando con il mouse sopra le immagini l’autoplay si ferma per poi ripartire quando il mouse esce dallo slider
 
-//utilizzare le timing functions per poter fare questo
-//setInterval() la piu' indicata perche ti permette di impostare un contatore che vada all'infinito finche io non lo blocco.
+
 
 
 const slider = document.querySelector('.items-wrapper');
@@ -49,7 +48,10 @@ items[counterImages].classList.add('active');
 thumbs[counterImages].classList.add('active');
 
 
-next.addEventListener('click', function() {
+next.addEventListener('click', forward) 
+
+function forward() {
+  setInterval(function() {
 
   items[counterImages].classList.remove('active');
   thumbs[counterImages].classList.remove('active');
@@ -57,10 +59,15 @@ next.addEventListener('click', function() {
   if(counterImages < 0 ) counterImages = images.length - 1;
   items[counterImages].classList.add('active');
   thumbs[counterImages].classList.add('active');
-})
+}, 2000);
+
+}
 
 
-setInterval(function() {
+prev.addEventListener('click', backwards) 
+
+function backwards() {
+  setInterval(function() {
 
   items[counterImages].classList.remove('active');
   thumbs[counterImages].classList.remove('active');
@@ -68,7 +75,10 @@ setInterval(function() {
   if(counterImages === images.length) counterImages = 0;
   items[counterImages].classList.add('active');
   thumbs[counterImages].classList.add('active');
-}, 1000);
+}, 2000);
+
+}
+
 
 
 
