@@ -46,8 +46,8 @@ items[counterImages].classList.add('active');
 thumbs[counterImages].classList.add('active');
 
 
-// next.addEventListener('click', pauseCounter);
-// prev.addEventListener('click', pauseCounter)
+slider.addEventListener('mouseover', pauseCounter);
+sliderThumb.addEventListener('mouseover', pauseCounter);
 
 clock = setInterval(function() {
 
@@ -60,9 +60,9 @@ clock = setInterval(function() {
 }, 2000);
 
 
-// function pauseCounter() {
-//     clearInterval(clock);
-//  }
+function pauseCounter() {
+   clearInterval(clock);
+ }
 
 
 
