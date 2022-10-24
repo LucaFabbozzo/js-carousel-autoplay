@@ -48,10 +48,9 @@ items[counterImages].classList.add('active');
 thumbs[counterImages].classList.add('active');
 
 
-next.addEventListener('click', forward) 
+next.addEventListener('mouseover', pauseCounter);
 
-function forward() {
-  setInterval(function() {
+const clock = setInterval(function() {
 
   items[counterImages].classList.remove('active');
   thumbs[counterImages].classList.remove('active');
@@ -61,25 +60,27 @@ function forward() {
   thumbs[counterImages].classList.add('active');
 }, 2000);
 
-}
+
+function pauseCounter() {
+    clearInterval(clock);
+ }
 
 
-prev.addEventListener('click', backwards) 
 
-function backwards() {
-  setInterval(function() {
+// prev.addEventListener('click', backwards) 
 
-  items[counterImages].classList.remove('active');
-  thumbs[counterImages].classList.remove('active');
-  counterImages++
-  if(counterImages === images.length) counterImages = 0;
-  items[counterImages].classList.add('active');
-  thumbs[counterImages].classList.add('active');
-}, 2000);
+// function backwards() {
+//   setInterval(function() {
 
-}
+//   items[counterImages].classList.remove('active');
+//   thumbs[counterImages].classList.remove('active');
+//   counterImages++
+//   if(counterImages === images.length) counterImages = 0;
+//   items[counterImages].classList.add('active');
+//   thumbs[counterImages].classList.add('active');
+// }, 2000);
 
-
+// }
 
 
 
