@@ -3,6 +3,7 @@
 // **BONUS:**
 // Passando con il mouse sopra le immagini l’autoplay si ferma per poi ripartire quando il mouse esce dallo slider
 
+const container = document.querySelector('.container');
 const slider = document.querySelector('.items-wrapper');
 const sliderThumb = document.querySelector('.items-wrap-small');
 const next = document.querySelector('.top');
@@ -46,13 +47,9 @@ thumbs[counterImages].classList.add('active');
 
 
 next.addEventListener('click', nextSlide);
-next.addEventListener('click', pauseCounter);
 prev.addEventListener('click', prevSlide);
-prev.addEventListener('click', pauseCounter);
-slider.addEventListener('mouseover', pauseCounter);
-slider.addEventListener('mouseout', playCounter);
-sliderThumb.addEventListener('mouseover', pauseCounter);
-sliderThumb.addEventListener('mouseout', playCounter);
+container.addEventListener('mouseenter', pauseCounter);
+container.addEventListener('mouseleave', playCounter);
 
 
 clock = setInterval(nextSlide, 1000);
